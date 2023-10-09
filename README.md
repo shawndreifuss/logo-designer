@@ -6,6 +6,8 @@
 
  * [Description](#description)
 
+  * [Images](#Images)
+
  * [User-Story](#User-Story)
 
  * [Acceptance-Criteria](#Acceptance-Criteria)
@@ -23,7 +25,12 @@ To build a node.js command line application that takes in user input to generate
 as a freelance web designer I want to generate
 a simple logo for my projects
 
+## Images and recording 
+https://drive.google.com/file/d/178p7xx6tvPt7O10QWEMrqO80l1SfW_ga/view
 
+![](./Assets/images/Screenshot%202023-10-09%20at%203.23.08 PM.png)
+![](./Assets/images/Screenshot%202023-10-09%20at%203.23.49 PM.png)
+![](./Assets/images/Screenshot%202023-10-09%20at%203.23.57 PM.png)
 
 ## Acceptance Criteria
 ```md
