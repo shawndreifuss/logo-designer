@@ -5,13 +5,12 @@ const { Triangle, Square, Circle} = require("./Develop/lib/shapes")
 
 
 //write to file with logo of users choices
-function writeFile (file, response) {
+function writeToFile (file, response) {
     let svgFile = "";
 
-    svgfile = 
+    svgFile = 
     '<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">';
-    // <g> tag wraps <text> tag so that user font input layers on top of polygon -> not behind
-  svgFile += "<g>";
+ 
   // Takes user input for shape choice and inserts it into SVG file
   svgFile += `${response.shape}`;
 // if statement to set it as traingle circle or square 
@@ -29,19 +28,15 @@ function writeFile (file, response) {
 
 // adding text into svg file 
  svgFile +=`<text x="150" y="130" text-anchor="middle" font-size="40" fill="${response.textColor}">${response.text}</text>`;
- // Closing </g> tag
- svgFile += "</g>";
  // Closing </svg> tag
  svgFile += "</svg>";
 
  //writing all information of logo to svg file 
 
-fs.writeFile(file, svgFile, (err) => {
+ fs.writeFile(file, svgFile, (err) => {
     err ? console.log(err) : console.log("logo generated")
 })
 }
-
-
 
 
 
@@ -64,9 +59,10 @@ inquirer
       name: 'textColor',
     },
     {
-      type: 'list',
-      message: "What shape would you like the logo to be?",
-      name: 'shape',
+        type: "list",
+        message: "What shape would you like the logo to render?",
+        choices: ["Triangle", "Square", "Circle"],
+        name: "shape",
     },
     {
         type: "input",
@@ -81,7 +77,7 @@ inquirer
     return
   } else {
     // Calling write file function to generate SVG file
-    fs.writeToFile("logo.svg", response);
+    writeToFile("logo.svg", response);
   }
 })
 };
