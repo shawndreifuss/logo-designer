@@ -1,16 +1,44 @@
 const fs = require('fs')
 const inquirer = require('inquirer');
+//imported classes
 const { Triangle, Square, Circle} = require("./Develop/lib/shapes")
 
-class Svg {
-    constructor() {
-        this.logoText = ''
-        this.logoshape = ''
-    }
-    render(){
-        return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">`
-    }
 
+//write to file with logo of users choices
+function writeFile (file, response) {
+    let svgFile = "";
+
+    svgfile = 
+    '<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">';
+    // <g> tag wraps <text> tag so that user font input layers on top of polygon -> not behind
+  svgFile += "<g>";
+  // Takes user input for shape choice and inserts it into SVG file
+  svgFile += `${response.shape}`;
+// if statement to set it as traingle circle or square 
+  let shapeChoice;
+  if (response.shape === 'triangle') {
+    shapeChoice = new Triangle();
+    svgFile += `<polygon points="150, 18 244, 182 56, 182" fill="${response.shapeColor}"/>`;
+  }else if (response.shape === 'square') {
+    shapeChoice = new Square();
+    svgFile += `<rect x="73" y="40" width="160" height="160" fill="${response.shapeColor}"/>`;
+ } else {
+    shapeChoice = new Circle();
+    svgFile += `<circle cx="150" cy="115" r="80" fill="${response.shapeColor}"/>`;
+ }
+
+// adding text into svg file 
+ svgFile +=`<text x="150" y="130" text-anchor="middle" font-size="40" fill="${response.textColor}">${response.text}</text>`;
+ // Closing </g> tag
+ svgFile += "</g>";
+ // Closing </svg> tag
+ svgFile += "</svg>";
+
+ //writing all information of logo to svg file 
+
+fs.writeFile(file, svgFile, (err) => {
+    err ? console.log(err) : console.log("logo generated")
+})
 }
 
 
