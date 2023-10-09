@@ -15,10 +15,10 @@ function writeToFile (file, response) {
   svgFile += `${response.shape}`;
 // if statement to set it as traingle circle or square 
   let shapeChoice;
-  if (response.shape === 'triangle') {
+  if (response.shape === 'Triangle') {
     shapeChoice = new Triangle();
     svgFile += `<polygon points="150, 18 244, 182 56, 182" fill="${response.shapeColor}"/>`;
-  }else if (response.shape === 'square') {
+  }else if (response.shape === 'Square') {
     shapeChoice = new Square();
     svgFile += `<rect x="73" y="40" width="160" height="160" fill="${response.shapeColor}"/>`;
  } else {
